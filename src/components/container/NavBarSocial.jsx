@@ -6,7 +6,7 @@ export const NavBarSocial = () => {
     <ul className="nav justify-content-center">
       <li className="nav-item">
         <NavLink
-          to="https://github.com/betoayza"
+          to="https://github.com/cobrasecx"
           className="nav-link active"
           style={{ color: "white", fontSize: "40px" }}
           aria-current="page"
@@ -17,7 +17,7 @@ export const NavBarSocial = () => {
 
       <li className="nav-item">
         <NavLink
-          to="https://www.linkedin.com/in/alberto-ayza-838023137/"
+          to="https://www.linkedin.com/in/albertoayza"
           className="nav-link active"
           style={{ color: "white", fontSize: "40px" }}
           aria-current="page"
