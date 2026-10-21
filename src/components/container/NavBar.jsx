@@ -74,7 +74,7 @@ export const NavBar = () => {
                 <li>
                   {/* using <a> instead <NavLink> for external URLs */}
                   <a
-                    href="https://betoayza.github.io/shopping-cart-siete-oro-frontend/"
+                    href="https://cobrasecx.github.io/shopping-cart-siete-oro-frontend/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>Siete de Oro: E-commerce</span>
@@ -82,7 +82,7 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://betoayza.github.io/car-workshop-frontend/"
+                    href="https://cobrasecx.github.io/car-workshop-frontend/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>SuperCar Workshop</span>
@@ -90,7 +90,7 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://betoayza.github.io/countries-cities/"
+                    href="https://cobrasecx.github.io/countries-cities/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>Countries Cities</span>
@@ -98,7 +98,7 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://betoayza.github.io/drum-machine/"
+                    href="https://cobrasecx.github.io/drum-machine/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>Drum</span>
@@ -106,7 +106,7 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://betoayza.github.io/song-finder/"
+                    href="https://cobrasecx.github.io/song-finder/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>Song Finder</span>
@@ -114,7 +114,7 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://betoayza.github.io/markdown-previewer/"
+                    href="https://cobrasecx.github.io/markdown-previewer/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>Markdown Previewer</span>
@@ -122,7 +122,7 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://betoayza.github.io/random-quote-machine/"
+                    href="https://cobrasecx.github.io/random-quote-machine/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>Random Quotes</span>
@@ -130,7 +130,7 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://betoayza.github.io/dog-finder-2/"
+                    href="https://cobrasecx.github.io/dog-finder-2/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>Dog Finder</span>
@@ -138,7 +138,7 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://betoayza.github.io/pokedex/"
+                    href="https://cobrasecx.github.io/pokedex/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>Pokedex ES</span>
@@ -146,7 +146,7 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://betoayza.github.io/music-band/"
+                    href="https://cobrasecx.github.io/music-band/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>Music Band</span>
@@ -154,7 +154,7 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://betoayza.github.io/js-calculator/"
+                    href="https://cobrasecx.github.io/js-calculator/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>JS Calculator</span>
@@ -162,7 +162,7 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://betoayza.github.io/to-do-list/"
+                    href="https://cobrasecx.github.io/to-do-list/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>To Do List</span>
@@ -170,7 +170,7 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://betoayza.github.io/notes/"
+                    href="https://cobrasecx.github.io/notes/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>Notes</span>
@@ -178,7 +178,7 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://betoayza.github.io/contacts-list/"
+                    href="https://cobrasecx.github.io/contacts-list/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>Contacts List</span>
@@ -186,7 +186,7 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://betoayza.github.io/tasks-manager/"
+                    href="https://cobrasecx.github.io/tasks-manager/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>Tasks Manager</span>
@@ -194,7 +194,7 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://betoayza.github.io/netflix-clone/"
+                    href="https://cobrasecx.github.io/netflix-clone/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>Netflix Clone</span>
@@ -202,7 +202,7 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://betoayza.github.io/weather-app/"
+                    href="https://cobrasecx.github.io/weather-app/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>Weather App</span>
@@ -210,7 +210,7 @@ export const NavBar = () => {
                 </li>
                 <li>
                   <a
-                    href="https://betoayza.github.io/25-5-clock/"
+                    href="https://cobrasecx.github.io/25-5-clock/"
                     className={"dropdown-item nav-link"}
                   >
                     <span style={siteStyle}>Pomodoro Clock</span>
