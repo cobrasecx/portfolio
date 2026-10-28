@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 
 const inactiveStyle = {
@@ -17,17 +16,51 @@ const siteStyle = {
   fontWeight: "bold",
 };
 
-let activeClassName = "pastelOrange";
+// NavLink llama a esta función y le pasa { isActive }.
+// Antes estaba repetida 5 veces; ahora se define una sola vez.
+const linkStyle = ({ isActive }) => (isActive ? activeStyle : inactiveStyle);
+
+// Parte común de las URLs: si cambia tu usuario, se edita solo acá
+const PROJECTS_BASE_URL = "https://cobrasecx.github.io";
+
+// Los datos viven separados del HTML: para agregar o quitar un proyecto
+// se toca una línea de este array y no un bloque entero de JSX
+const projects = [
+  { slug: "shopping-cart-siete-oro-frontend", name: "Siete de Oro: E-commerce" },
+  { slug: "car-workshop-frontend", name: "SuperCar Workshop" },
+  { slug: "countries-cities", name: "Countries Cities" },
+  { slug: "drum-machine", name: "Drum" },
+  { slug: "song-finder", name: "Song Finder" },
+  { slug: "markdown-previewer", name: "Markdown Previewer" },
+  { slug: "random-quote-machine", name: "Random Quotes" },
+  { slug: "dog-finder-2", name: "Dog Finder" },
+  { slug: "pokedex", name: "Pokedex ES" },
+  { slug: "music-band", name: "Music Band" },
+  { slug: "js-calculator", name: "JS Calculator" },
+  { slug: "to-do-list", name: "To Do List" },
+  { slug: "notes", name: "Notes" },
+  { slug: "contacts-list", name: "Contacts List" },
+  { slug: "tasks-manager", name: "Tasks Manager" },
+  { slug: "netflix-clone", name: "Netflix Clone" },
+  { slug: "weather-app", name: "Weather App" },
+  { slug: "25-5-clock", name: "Pomodoro Clock" },
+];
+
+// Mini-componente para un ítem del menú: evita repetir <li> + <NavLink>.
+// "children" es el texto que escribís entre las etiquetas (ej. Home).
+const NavItem = ({ to, children }) => (
+  <li className="nav-item">
+    <NavLink to={to} className="nav-link" style={linkStyle}>
+      {children}
+    </NavLink>
+  </li>
+);
 
 export const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <NavLink
-          to="/"
-          style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}
-          className={"navbar-brand"}
-        >
+        <NavLink to="/" style={linkStyle} className="navbar-brand">
           <span style={{ fontWeight: "bold", fontStyle: "italic" }}>
             My Portfolio
           </span>
@@ -45,22 +78,13 @@ export const NavBar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <NavLink
-                to={`/`}
-                className={"nav-link"}
-                style={({ isActive }) =>
-                  isActive ? activeStyle : inactiveStyle
-                }
-              >
-                Home
-              </NavLink>
-            </li>
+            <NavItem to="/">Home</NavItem>
+
             <li className="nav-item dropdown">
               <NavLink
                 to="#"
-                className={`nav-link dropdown-toggle ${({ isActive }) =>
-                  isActive ? activeClassName : undefined}`}
+                id="navbarDropdown"
+                className="nav-link dropdown-toggle"
                 style={inactiveStyle}
                 data-bs-toggle="dropdown" // importante
               >
@@ -68,189 +92,27 @@ export const NavBar = () => {
               </NavLink>
 
               <ul
-                className="dropdown-menu dropdown-menu-dark dropdown-menu-right text-center"
+                className="dropdown-menu dropdown-menu-dark text-center"
                 aria-labelledby="navbarDropdown"
               >
-                <li>
-                  {/* using <a> instead <NavLink> for external URLs */}
-                  <a
-                    href="https://cobrasecx.github.io/shopping-cart-siete-oro-frontend/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>Siete de Oro: E-commerce</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cobrasecx.github.io/car-workshop-frontend/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>SuperCar Workshop</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cobrasecx.github.io/countries-cities/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>Countries Cities</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cobrasecx.github.io/drum-machine/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>Drum</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cobrasecx.github.io/song-finder/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>Song Finder</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cobrasecx.github.io/markdown-previewer/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>Markdown Previewer</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cobrasecx.github.io/random-quote-machine/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>Random Quotes</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cobrasecx.github.io/dog-finder-2/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>Dog Finder</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cobrasecx.github.io/pokedex/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>Pokedex ES</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cobrasecx.github.io/music-band/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>Music Band</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cobrasecx.github.io/js-calculator/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>JS Calculator</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cobrasecx.github.io/to-do-list/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>To Do List</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cobrasecx.github.io/notes/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>Notes</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cobrasecx.github.io/contacts-list/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>Contacts List</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cobrasecx.github.io/tasks-manager/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>Tasks Manager</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cobrasecx.github.io/netflix-clone/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>Netflix Clone</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cobrasecx.github.io/weather-app/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>Weather App</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cobrasecx.github.io/25-5-clock/"
-                    className={"dropdown-item nav-link"}
-                  >
-                    <span style={siteStyle}>Pomodoro Clock</span>
-                  </a>
-                </li>
+                {/* <a> en vez de <NavLink> porque son URLs externas.
+                    "key" ayuda a React a identificar cada elemento de la lista */}
+                {projects.map(({ slug, name }) => (
+                  <li key={slug}>
+                    <a
+                      href={`${PROJECTS_BASE_URL}/${slug}/`}
+                      className="dropdown-item nav-link"
+                    >
+                      <span style={siteStyle}>{name}</span>
+                    </a>
+                  </li>
+                ))}
               </ul>
             </li>
-            <li className="nav-item">
-              <NavLink
-                to={`/achievements`}
-                className={"nav-link"}
-                style={({ isActive }) =>
-                  isActive ? activeStyle : inactiveStyle
-                }
-              >
-                Achievements
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                to={`/about`}
-                className={"nav-link"}
-                style={({ isActive }) =>
-                  isActive ? activeStyle : inactiveStyle
-                }
-              >
-                About
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                to={`/contact`}
-                className={"nav-link"}
-                style={({ isActive }) =>
-                  isActive ? activeStyle : inactiveStyle
-                }
-              >
-                Contact
-              </NavLink>
-            </li>
+
+            <NavItem to="/achievements">Achievements</NavItem>
+            <NavItem to="/about">About</NavItem>
+            <NavItem to="/contact">Contact</NavItem>
           </ul>
         </div>
       </div>
