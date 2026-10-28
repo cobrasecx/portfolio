@@ -6,7 +6,7 @@ import { HashRouter } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <HashRouter basename="/" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+  <HashRouter basename="/">
     <App />
   </HashRouter>
 );
