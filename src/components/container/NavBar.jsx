@@ -88,7 +88,7 @@ export const NavBar = () => {
                 style={inactiveStyle}
                 data-bs-toggle="dropdown" // importante
               >
-                Proyects
+                Projects
               </NavLink>
 
               <ul
