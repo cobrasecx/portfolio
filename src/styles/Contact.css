@@ -1,0 +1,22 @@
+/* Página y formulario: contenido centrado con grid */
+.contact,
+.contact__form {
+    display: grid;
+    place-items: center;
+}
+
+.contact {
+    max-width: 100%;
+}
+
+/* Texto que escribe el usuario: marrón rojizo en cursiva (antes repetido 4 veces inline) */
+.contact__input {
+    color: #932a0a;
+    font-style: italic;
+}
+
+/* Contenido del modal de resultado */
+.contact__result {
+    display: grid;
+    place-items: center;
+}
