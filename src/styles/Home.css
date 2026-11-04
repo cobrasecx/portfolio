@@ -1,0 +1,14 @@
+/* Contenedor de la página: reparte el título arriba y las redes abajo */
+.home {
+    min-height: 95vh;
+    /* 95 y no 100 para dejar lugar al navbar de arriba */
+    display: grid;
+    align-content: space-between;
+    place-items: center;
+}
+
+/* Caja del título: borde doble violeta (grosor, estilo, color) */
+.home__hero {
+    border: 3px double #927d98;
+    border-radius: 0.5rem;
+}
