@@ -1,47 +1,29 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+// NavBarSocial.jsx — iconos de redes sociales 🌐
+import "bootstrap-icons/font/bootstrap-icons.css"; // 🎨 el CSS de los iconos vive donde se usa
 
-export const NavBarSocial = () => {
-  return (
-    <ul className="nav justify-content-center">
-      <li className="nav-item">
-        <NavLink
-          to="https://github.com/cobrasecx"
-          className="nav-link active"
-          style={{ color: "white", fontSize: "40px" }}
-          aria-current="page"
-        >
-          <i className="bi-github"></i>
-        </NavLink>
-      </li>
+// 📝 Los datos en un array: agregar una red = agregar UNA línea.
+const SOCIALS = [
+  { name: "GitHub", href: "https://github.com/cobrasecx", icon: "bi-github" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/albertoayza", icon: "bi-linkedin" },
+  { name: "YouTube", href: "https://www.youtube.com/@linuxexplorer1", icon: "bi-youtube" },
+];
 
-      <li className="nav-item">
-        <NavLink
-          to="https://www.linkedin.com/in/albertoayza"
-          className="nav-link active"
-          style={{ color: "white", fontSize: "40px" }}
-          aria-current="page"
+export const NavBarSocial = () => (
+  <ul className="nav justify-content-center">
+    {SOCIALS.map(({ name, href, icon }) => (
+      // key: React necesita un identificador único por elemento de la lista 🔑
+      <li className="nav-item" key={name}>
+        <a
+          href={href}
+          className="nav-link text-white"
+          style={{ fontSize: "40px" }} // el <i> hereda el tamaño, así se define una sola vez
+          target="_blank" // abre en pestaña nueva
+          rel="noopener noreferrer" // 🛡️ evita que la pestaña nueva controle a la tuya (tabnabbing)
+          aria-label={name} // 🔊 un link con solo ícono no tiene texto: esto le da nombre al lector de pantalla
         >
-          <i
-            className="bi-linkedin"
-            style={{ color: "white", fontSize: "40px" }}
-          ></i>
-        </NavLink>
+          <i className={icon} aria-hidden="true"></i>
+        </a>
       </li>
-
-      <li className="nav-item">
-        <NavLink
-          to="https://www.youtube.com/@linuxexplorer1"
-          className="nav-link active"
-          style={{ color: "white", fontSize: "40px" }}
-          aria-current="page"
-        >
-          <i
-            className="bi-youtube"
-            style={{ color: "white", fontSize: "40px" }}
-          ></i>
-        </NavLink>
-      </li>
-    </ul>
-  );
-};
+    ))}
+  </ul>
+);
