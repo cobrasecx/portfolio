@@ -1,72 +1,91 @@
-import React from "react";
+// About.jsx — página "Sobre mí" 👤
+import "../../styles/About.css";
 import picCV from "../../assets/img/photo-cv-black-bg.png";
 
-export const About = () => {
-  return (
-    <div className={""} style={{ minHeight: "90vh", maxWidth: "100%" }}>
-      <div
-        className={"text-center p-3"}
-        style={{
-          borderStyle: "double",
-          borderRadius: "0.5rem",
-          borderColor: "#dcf970",
-        }}
-      >
-        <h2>About:</h2>
-        <p>
-          Greetings! My name is Alberto Ayza, and I recently graduated from the{" "}
-          <a href="https://inspt.utn.edu.ar/">INSPT</a> -{" "}
-          <a href="https://www.frba.utn.edu.ar/">
-            National Technological University
-          </a>{" "}
-          in Buenos Aires, Argentina with a degree in{" "}
-          <a href="https://inspt.utn.edu.ar/carreras/informatica_aplicada/">
-            Higher Technician in Applied Computing
-          </a>{" "}
-          in 2022. As a junior systems technician and web developer, I have
-          gained experience in full-stack development using the{" "}
-          <span className="ability">MERN</span> stack. I am highly proficient in{" "}
-          <span className="ability">JavaScript</span>,{" "}
-          <span className="ability">ReactJS</span>,{" "}
-          <span className="ability">NodeJS</span>,{" "}
-          <span className="ability">ExpressJS</span>, and{" "}
-          <span className="ability">MongoDB</span>. Additionally, I am skilled
-          in <span className="ability">HTML</span>,{" "}
-          <span className="ability">CSS</span>, and CSS frameworks such as{" "}
-          <span className="ability">Bootstrap</span>. I have developed a strong
-          understanding of <span className="ability"></span>GIT and{" "}
-          <span className="ability"></span>REST APIs in my projects, and I find
-          developing web apps incredibly rewarding. I also have experience
-          working with <span className="ability">Python</span>, which I often
-          use in my projects. My proficiency in using{" "}
-          <span className="ability">Linux</span>, particularly{" "}
-          <span className="ability">Ubuntu</span>, has allowed me to gain
-          experience in system administration using the{" "}
-          <span className="ability">Bash</span> terminal. I find Linux to be a
-          highly useful operating system. I am passionate about the potential of{" "}
-          <span className="ability">Web 3.0</span> and believe it has the
-          ability to revolutionize the industry. With my knowledge of the{" "}
-          <span className="ability">Solidity</span> language, I am capable of
-          developing smart contracts for the Ethereum blockchain. I have a basic
-          understanding of <span className="ability">penetration testing</span>{" "}
-          and recognize the significance of{" "}
-          <span className="ability">cybersecurity</span>. As a junior developer,
-          I am eager to learn and grow both professionally and personally. I am
-          committed to providing value to IT companies by contributing to new
-          projects and challenges. I am excited to apply my skills and knowledge
-          to real-world projects and make a positive impact in the field of
-          technology. Thank you for taking the time to consider my
-          qualifications.
-        </p>
-        <div className="container mb-2">
-          <img
-            src={picCV}
-            className="img-fluid rounded-top img-thumbnail"
-            alt="Picture CV"
-            style={{ maxWidth: "100%", height: "auto" }}
-          />
+// 📝 Las URLs juntas arriba: si una cambia, se edita en un solo lugar
+const LINKS = {
+  inspt: "https://inspt.utn.edu.ar/",
+  utn: "https://www.frba.utn.edu.ar/",
+  career: "https://inspt.utn.edu.ar/carreras/informatica_aplicada/",
+};
+
+// 📊 Habilidades en un array de objetos: agregar o quitar una = editar UNA línea.
+// ⚠️ Python venía de tu bio vieja: dejalo solo si sigue vigente.
+const SKILL_GROUPS = [
+  {
+    title: "Security",
+    skills: ["Web hacking", "Bug bounties & VDPs", "CTFs & labs", "Caido", "Kali Linux"],
+  },
+  {
+    title: "Web development",
+    skills: ["JavaScript", "React", "Node.js", "Express", "MongoDB", "HTML", "CSS", "Bootstrap", "Git", "REST APIs"],
+  },
+  {
+    title: "Also",
+    skills: ["Linux", "Bash", "Python", "Web3 (studying)"],
+  },
+];
+
+// Link externo seguro: pestaña nueva + noopener noreferrer 🛡️
+const ExtLink = ({ href, children }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer">
+    {children}
+  </a>
+);
+
+export const About = () => (
+  <section className="about">
+    <div className="about__card text-center p-3">
+      <h2>About:</h2>
+
+      <p>
+        Hi! I'm Alberto Ayza, a cybersecurity student and junior ethical
+        hacking researcher from Argentina. I focus on web hacking: I practice
+        with bug bounty programs and VDPs, PortSwigger Web Security Academy
+        labs, OWASP Juice Shop and CTFs, and I use Caido as my intercepting
+        proxy.
+      </p>
+
+      <p>
+        Before moving into security I worked as a full-stack web developer
+        (JavaScript, React, Node.js, Express and MongoDB). That background helps
+        me understand how web applications are built, and therefore how they
+        break. I hold a{" "}
+        <ExtLink href={LINKS.career}>
+          Higher Technician degree in Applied Computing
+        </ExtLink>{" "}
+        (2022) from <ExtLink href={LINKS.inspt}>INSPT</ExtLink> -{" "}
+        <ExtLink href={LINKS.utn}>UTN</ExtLink> in Buenos Aires.
+      </p>
+
+      <p>
+        I'm also a freelancer and entrepreneur, and I'm currently studying
+        Web3. If you want to talk about web development, security or a project,
+        reach out through the Contact section.
+      </p>
+
+      {/* 🔁 Un grupo por cada elemento del array; adentro, una "pastilla" por habilidad */}
+      {SKILL_GROUPS.map(({ title, skills }) => (
+        <div key={title} className="about__group">
+          <h3 className="h5">{title}</h3>
+          <ul className="about__skills">
+            {skills.map((skill) => (
+              <li key={skill} className="about__skill ability">
+                {skill}
+              </li>
+            ))}
+          </ul>
         </div>
+      ))}
+
+      <div className="container mb-2">
+        <img
+          src={picCV}
+          className="img-fluid rounded-top img-thumbnail"
+          alt="Photo of Alberto Ayza"
+          loading="lazy"
+        />
       </div>
     </div>
-  );
-};
+  </section>
+);
