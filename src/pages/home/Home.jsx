@@ -1,39 +1,26 @@
-import React, { useState } from "react";
-import "bootstrap-icons/font/bootstrap-icons.css";
+// Home.jsx — página de inicio 🏠
+import "../../styles/Home.css"; // 🎨 los estilos salen del JSX y viven en su propio archivo
 import { NavBarSocial } from "../../components/container/NavBarSocial";
-import { Visits } from "../../components/pure/Visits";
 
-export const Home = () => {
-  const [visits, setVisits] = useState(null);
-
-  return (
-    <div
-      className={""}
-      style={{
-        minHeight: "95vh",
-        display: "grid",
-        alignContent: "space-between",
-        placeItems: "center",
-      }}
-    >
-      <div
-        className={"text-center"}
-        style={{
-          borderRadius: "0.5rem",
-          borderStyle: "double",
-          borderColor: "#927d98",
-          width: "auto",
-        }}
-      >
-        <h1>Hi! I'm Alberto Ayza (betodev)</h1>
-        <h3 className={""} style={{ textShadow: "1px" }}>
-          Soft & Web Developer, Pentester & content creator located in Argentina
-        </h3>
-      </div>
-      <div>
-        {/* <Visits visits={visits} setVisits={setVisits} /> */}
-        <NavBarSocial />
-      </div>
-    </div>
-  );
+// 📝 Textos arriba, separados del diseño: si cambiás de alias o de título,
+// editás UNA línea sin tocar el JSX.
+const HERO = {
+  title: "Hi! I'm Alberto Ayza (betodev)",
+  subtitle: "Soft & Web Developer, Pentester & content creator located in Argentina",
 };
+
+export const Home = () => (
+  // <main> en vez de <div>: le dice al navegador cuál es el contenido principal 🧭
+  <main className="home">
+    <header className="home__hero text-center">
+      <h1>{HERO.title}</h1>
+      {/* <p className="h3">: se ve como h3 de Bootstrap, pero no salta de h1 a h3 (orden correcto de títulos) */}
+      <p className="h3">{HERO.subtitle}</p>
+    </header>
+
+    <footer>
+      {/* 📊 Acá va <Visits /> cuando resolvamos el contador */}
+      <NavBarSocial />
+    </footer>
+  </main>
+);
