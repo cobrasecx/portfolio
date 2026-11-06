@@ -1,5 +1,4 @@
 // NavBarSocial.jsx — iconos de redes sociales 🌐
-import "bootstrap-icons/font/bootstrap-icons.css"; // 🎨 el CSS de los iconos vive donde se usa
 
 // 📝 Los datos en un array: agregar una red = agregar UNA línea.
 const SOCIALS = [
@@ -15,8 +14,7 @@ export const NavBarSocial = () => (
       <li className="nav-item" key={name}>
         <a
           href={href}
-          className="nav-link text-white"
-          style={{ fontSize: "40px" }} // el <i> hereda el tamaño, así se define una sola vez
+          className="nav-link text-white fs-1"
           target="_blank" // abre en pestaña nueva
           rel="noopener noreferrer" // 🛡️ evita que la pestaña nueva controle a la tuya (tabnabbing)
           aria-label={name} // 🔊 un link con solo ícono no tiene texto: esto le da nombre al lector de pantalla
