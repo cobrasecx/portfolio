@@ -61,7 +61,7 @@ export const NavBar = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         <NavLink to="/" style={linkStyle} className="navbar-brand">
-          <span style={{ fontWeight: "bold", fontStyle: "italic" }}>
+          <span className="fw-bold fst-italic">
             My Portfolio
           </span>
         </NavLink>

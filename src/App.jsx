@@ -4,7 +4,7 @@ import { NavBar } from "./components/container/NavBar";
 
 function App() {
   return (
-    <div className="App" style={{ minHeight: "100vh" }}>
+    <div className="App min-vh-100">
       <NavBar />
       <Routes>
         <Route path="/" element={<Components.Home />} />
