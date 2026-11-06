@@ -1,12 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import "./styles/index.css";
-import { HashRouter } from "react-router-dom";
-import "bootstrap-icons/font/bootstrap-icons.css";
+// ❌ Se elimina: import React from "react";
+import { StrictMode } from "react"; // 🛡️ Se importa desde "react"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <HashRouter basename="/">
-    <App />
-  </HashRouter>
+  <StrictMode>
+    {/* 🗑️ basename="/" eliminado (ya es el valor por defecto) */}
+    <HashRouter>
+      <App />
+    </HashRouter>
+  </StrictMode>
 );
