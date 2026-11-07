@@ -18,6 +18,11 @@ const SOCIALS = [
     href: 'https://www.tiktok.com/@emprendertotal',
     icon: 'bi-tiktok', // 🎵 ícono de Bootstrap Icons
   },
+  {
+    name: 'OpenSea',
+    href: 'https://opensea.io/es/emprendertotal',
+    icon: 'bi-wallet2', // 👛 genérico: Bootstrap Icons no trae el logo de OpenSea
+  },
 ]
 
 export const NavBarSocial = () => (
