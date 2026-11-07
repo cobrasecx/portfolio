@@ -112,6 +112,7 @@ export const NavBar = () => {
             </li>
 
             <NavItem to="/certifications">Certifications</NavItem>
+            <NavItem to="/news">News</NavItem>
             <NavItem to="/about">About</NavItem>
             <NavItem to="/contact">Contact</NavItem>
             <NavItem to="/donations">Donations</NavItem>
