@@ -98,7 +98,7 @@ export const About = () => (
       <div className="container mb-2">
         <img
           src={picCV}
-          className="img-fluid rounded-top img-thumbnail"
+          className="about__photo rounded-circle"
           alt="Photo of Alberto Ayza"
           loading="lazy"
         />

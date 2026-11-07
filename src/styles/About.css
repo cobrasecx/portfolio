@@ -20,3 +20,13 @@
   border-radius: 999px;
   padding: 0.15rem 0.75rem;
 }
+
+/* Foto de perfil: tamaño fijo y circular */
+.about__photo {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  /* 🎯 recorta para llenar el círculo sin deformar la foto */
+  object-position: top;
+  /* 🙂 prioriza la parte de arriba, donde está la cara */
+}
