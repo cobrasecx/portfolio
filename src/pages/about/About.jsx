@@ -1,6 +1,6 @@
 // About.jsx — página "Sobre mí" 👤
 import '../../styles/About.css'
-import picCV from '../../assets/img/photo-cv-black-bg.png'
+import picCV from '../../assets/img/photo-cv-black-bg.webp'
 
 // 📝 Las URLs juntas arriba: si una cambia, se edita en un solo lugar
 const LINKS = {
