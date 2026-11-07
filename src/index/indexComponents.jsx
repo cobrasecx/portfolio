@@ -4,5 +4,6 @@ import { Error404 } from '../pages/404/Error404'
 import { Home } from '../pages/home/Home'
 import { Certifications } from '../pages/certifications/Certifications'
 import { Donations } from '../pages/donations/Donations'
+import { News } from '../pages/news/News'
 
-export { Error404, Home, Contact, About, Certifications, Donations }
+export { Error404, Home, Contact, About, Certifications, Donations, News }
