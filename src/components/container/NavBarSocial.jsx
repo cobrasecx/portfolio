@@ -13,6 +13,11 @@ const SOCIALS = [
     href: 'https://www.youtube.com/@emprendertotal',
     icon: 'bi-youtube',
   },
+  {
+    name: 'TikTok',
+    href: 'https://www.tiktok.com/@emprendertotal',
+    icon: 'bi-tiktok', // 🎵 ícono de Bootstrap Icons
+  },
 ]
 
 export const NavBarSocial = () => (
