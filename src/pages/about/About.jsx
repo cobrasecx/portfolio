@@ -39,7 +39,7 @@ export const About = () => (
       <h2>About:</h2>
 
       <p>
-        Hi! I'm Alberto Ayza, a cybersecurity student and junior ethical
+        Hi! I&apos;m Alberto Ayza, a cybersecurity student and junior ethical
         hacking researcher from Argentina. I focus on web hacking: I practice
         with bug bounty programs and VDPs, PortSwigger Web Security Academy
         labs, OWASP Juice Shop and CTFs, and I use Caido as my intercepting
@@ -59,7 +59,7 @@ export const About = () => (
       </p>
 
       <p>
-        I'm also a freelancer and entrepreneur, and I'm currently studying
+        I&apos;m also a freelancer and entrepreneur, and I&apos;m currently studying
         Web3. If you want to talk about web development, security or a project,
         reach out through the Contact section.
       </p>
