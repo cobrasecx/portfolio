@@ -9,20 +9,14 @@
   display: none;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
+  overflow-y: auto;
 }
 
 .modal.is-open {
   display: flex;
-  /* justify-content: center;
-    align-items: center; */
 }
 
 .modal-div {
   position: relative;
 }
-
-/* .modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-} */
