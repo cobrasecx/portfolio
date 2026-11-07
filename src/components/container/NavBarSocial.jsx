@@ -10,7 +10,7 @@ const SOCIALS = [
   },
   {
     name: 'YouTube',
-    href: 'https://www.youtube.com/@linuxexplorer1',
+    href: 'https://www.youtube.com/@emprendertotal',
     icon: 'bi-youtube',
   },
 ]
