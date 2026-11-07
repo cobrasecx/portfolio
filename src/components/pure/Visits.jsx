@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
-import axios from "axios";
+import { useEffect } from "react";
 import ReactGA from "react-ga4";
 
-export const Visits = ({ visits, setVisits }) => {
+export const Visits = ({ visits }) => {
   useEffect(() => {
     // const getVisits = async () => {
     //   const url =
