@@ -1,0 +1,135 @@
+/* 🏆 Paleta dorada en variables CSS: para cambiar el tono, se edita acá una sola vez */
+.writeups {
+  --gold: #d4af37;
+  --gold-light: #f3e2a0;
+  --gold-dark: #8a6d1d;
+  --surface: #14110a;
+  --text: #f5ecd0;
+  max-width: 960px;
+}
+
+.writeups__title {
+  color: var(--gold-light);
+  letter-spacing: 0.05em;
+}
+
+.writeups__intro {
+  color: #b9ad8a;
+  margin-bottom: 1.5rem;
+}
+
+/* 📋 La tabla: fondo oscuro, borde dorado y un resplandor suave */
+.writeups__table {
+  width: 100%;
+  border-collapse: separate;
+  /* necesario para que border-radius funcione en la tabla */
+  border-spacing: 0;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--gold-dark);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  /* recorta las esquinas del encabezado */
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.15);
+}
+
+/* 🥇 Encabezado con degradado dorado */
+.writeups__table th {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1a1405;
+  background: linear-gradient(
+    135deg,
+    var(--gold-light),
+    var(--gold) 50%,
+    var(--gold-dark)
+  );
+}
+
+.writeups__table td {
+  padding: 0.9rem 1rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+/* ✨ Al pasar el mouse, la fila se ilumina apenas */
+.writeups__table tbody tr:hover {
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.writeups__machine {
+  font-weight: 600;
+  color: var(--gold-light);
+}
+
+/* 🔘 El enlace como botón dorado en forma de píldora */
+.writeups__link {
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #1a1405;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.writeups__link:hover {
+  background: var(--gold-light);
+  color: #1a1405;
+}
+
+/* ⌨️ Para quien navega con teclado: se ve dónde está el foco */
+.writeups__link:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 2px;
+}
+
+/* 📱 PANTALLAS CHICAS: cada fila pasa a ser una tarjeta apilada */
+@media (max-width: 640px) {
+  .writeups__table,
+  .writeups__table tbody,
+  .writeups__table tr,
+  .writeups__table td {
+    display: block;
+    width: 100%;
+  }
+
+  /* El encabezado ya no tiene sentido: lo escondemos solo visualmente */
+  .writeups__table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .writeups__table tbody tr {
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--gold-dark);
+  }
+
+  .writeups__table tbody tr:first-child {
+    border-top: 0;
+  }
+
+  /* Cada dato en una línea: título dorado a la izquierda, valor a la derecha */
+  .writeups__table td {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.4rem 1rem;
+    border-top: 0;
+    text-align: right;
+  }
+
+  /* ✨ El título sale del atributo data-label que pusimos en el JSX */
+  .writeups__table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    text-align: left;
+    color: var(--gold);
+  }
+}

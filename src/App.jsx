@@ -19,6 +19,8 @@ function App() {
 
         <Route path="/news" element={<Components.News />} />
 
+        <Route path="/writeups" element={<Components.WriteUps />} />
+
         <Route path="*" element={<Components.Error404 />} />
       </Routes>
     </div>
