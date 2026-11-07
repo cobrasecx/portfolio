@@ -1,17 +1,17 @@
-import { StrictMode } from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "./styles/index.css";
-import { HashRouter } from "react-router-dom";
-import "bootstrap-icons/font/bootstrap-icons.css";
+import { StrictMode } from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import './styles/index.css'
+import { HashRouter } from 'react-router-dom'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* 🗑️ basename="/" eliminado (ya es el valor por defecto) */}
     <HashRouter>
       <App />
     </HashRouter>
-  </StrictMode>
-);
+  </StrictMode>,
+)

@@ -1,6 +1,6 @@
-import { Routes, Route } from "react-router-dom";
-import * as Components from "./index/indexComponents";
-import { NavBar } from "./components/container/NavBar";
+import { Routes, Route } from 'react-router-dom'
+import * as Components from './index/indexComponents'
+import { NavBar } from './components/container/NavBar'
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route path="*" element={<Components.Error404 />} />
       </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

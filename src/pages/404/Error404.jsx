@@ -1,6 +1,6 @@
 // ❌ Se elimina: import React from "react";
 // ✅ Se agrega Link (navega sin recargar la página) y se saca useNavigate
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 export const Error404 = () => {
   // ❌ Se elimina el hook useNavigate y la línea `let navigate = ...`
@@ -18,5 +18,5 @@ export const Error404 = () => {
         Go home
       </Link>
     </div>
-  );
-};
+  )
+}

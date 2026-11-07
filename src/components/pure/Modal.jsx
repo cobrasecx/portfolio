@@ -1,9 +1,9 @@
-import("../../styles/Modal.css");
+import('../../styles/Modal.css')
 
 export const Modal = ({ children }) => {
   return (
-    <div className={"modal is-open"}>
-      <div className={"modal-div"}>{children}</div>
+    <div className={'modal is-open'}>
+      <div className={'modal-div'}>{children}</div>
     </div>
-  );
-};
+  )
+}

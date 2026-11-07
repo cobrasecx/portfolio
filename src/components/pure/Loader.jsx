@@ -1,5 +1,5 @@
-import { Modal } from "./Modal";
-import "./Loader.css";
+import { Modal } from './Modal'
+import './Loader.css'
 
 export const Loader = () => {
   return (
@@ -10,5 +10,5 @@ export const Loader = () => {
         </div>
       </div>
     </Modal>
-  );
-};
+  )
+}

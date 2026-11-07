@@ -2,10 +2,18 @@
 
 // 📝 Los datos en un array: agregar una red = agregar UNA línea.
 const SOCIALS = [
-  { name: "GitHub", href: "https://github.com/cobrasecx", icon: "bi-github" },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/albertoayza", icon: "bi-linkedin" },
-  { name: "YouTube", href: "https://www.youtube.com/@linuxexplorer1", icon: "bi-youtube" },
-];
+  { name: 'GitHub', href: 'https://github.com/cobrasecx', icon: 'bi-github' },
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/albertoayza',
+    icon: 'bi-linkedin',
+  },
+  {
+    name: 'YouTube',
+    href: 'https://www.youtube.com/@linuxexplorer1',
+    icon: 'bi-youtube',
+  },
+]
 
 export const NavBarSocial = () => (
   <ul className="nav justify-content-center">
@@ -24,4 +32,4 @@ export const NavBarSocial = () => (
       </li>
     ))}
   </ul>
-);
+)

@@ -2,24 +2,36 @@
 // Para sumar un logro nuevo solo tocás este array, sin tocar el JSX.
 const ACHIEVEMENTS = [
   {
-    category: "Cybersecurity",
-    items: [
-      { title: "Linux Fundamentals", url: "https://academy.hackthebox.com/achievement/845032/18" },
-      { title: "Using Metasploit Framework", url: "https://academy.hackthebox.com/achievement/845032/39" },
-      { title: "Introduction to Web Applications", url: "https://academy.hackthebox.com/achievement/845032/75" },
-      { title: "Introduction to Networking", url: "https://academy.hackthebox.com/achievement/845032/34" },
-    ],
-  },
-  {
-    category: "Web development",
+    category: 'Cybersecurity',
     items: [
       {
-        title: "Frontend Development Libraries",
-        url: "https://www.freecodecamp.org/certification/betoayza/front-end-development-libraries",
+        title: 'Linux Fundamentals',
+        url: 'https://academy.hackthebox.com/achievement/845032/18',
+      },
+      {
+        title: 'Using Metasploit Framework',
+        url: 'https://academy.hackthebox.com/achievement/845032/39',
+      },
+      {
+        title: 'Introduction to Web Applications',
+        url: 'https://academy.hackthebox.com/achievement/845032/75',
+      },
+      {
+        title: 'Introduction to Networking',
+        url: 'https://academy.hackthebox.com/achievement/845032/34',
       },
     ],
   },
-];
+  {
+    category: 'Web development',
+    items: [
+      {
+        title: 'Frontend Development Libraries',
+        url: 'https://www.freecodecamp.org/certification/betoayza/front-end-development-libraries',
+      },
+    ],
+  },
+]
 
 // 🖼️ VISTA: recorre los datos y dibuja una sección por categoría.
 export const Achievements = () => {
@@ -48,5 +60,5 @@ export const Achievements = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}

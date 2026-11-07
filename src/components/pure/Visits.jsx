@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import ReactGA from "react-ga4";
+import { useEffect } from 'react'
+import ReactGA from 'react-ga4'
 
 export const Visits = ({ visits }) => {
   useEffect(() => {
@@ -30,17 +30,17 @@ export const Visits = ({ visits }) => {
     //   },
     // });
 
-    let dsa = ReactGA.initialize(`${import.meta.env.VITE_TRACKING_ID}`);
+    let dsa = ReactGA.initialize(`${import.meta.env.VITE_TRACKING_ID}`)
     ReactGA.send({
-      hitType: "pageview",
-      page: "https://betoayza.github.io/portfolio/",
-    });
+      hitType: 'pageview',
+      page: 'https://betoayza.github.io/portfolio/',
+    })
     let asd = ReactGA.event({
-      category: "Link",
-      action: "Clicked",
-    });
+      category: 'Link',
+      action: 'Clicked',
+    })
 
-    console.log(dsa, asd);
+    console.log(dsa, asd)
     // ReactGA.event({
     //   category: "Page View",
     //   action: "https://betoayza.github.io/portfolio/",
@@ -49,11 +49,11 @@ export const Visits = ({ visits }) => {
     // ReactGA.pageview("https://betoayza.github.io/portfolio/");
     // console.log(views);
     // setVisits(views);
-  }, []);
+  }, [])
 
   return (
-    <div className={"text-center"}>
+    <div className={'text-center'}>
       <h2>Visits: {visits}</h2>
     </div>
-  );
-};
+  )
+}
