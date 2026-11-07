@@ -114,6 +114,7 @@ export const NavBar = () => {
             <NavItem to="/achievements">Achievements</NavItem>
             <NavItem to="/about">About</NavItem>
             <NavItem to="/contact">Contact</NavItem>
+            <NavItem to="/donations">Donations</NavItem>
           </ul>
         </div>
       </div>
