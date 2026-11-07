@@ -13,7 +13,7 @@ function App() {
 
         <Route path="/about" element={<Components.About />} />
 
-        <Route path="/achievements" element={<Components.Achievements />} />
+        <Route path="/certifications" element={<Components.Certifications />} />
 
         <Route path="/donations" element={<Components.Donations />} />
 

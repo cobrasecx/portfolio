@@ -111,7 +111,7 @@ export const NavBar = () => {
               </ul>
             </li>
 
-            <NavItem to="/achievements">Achievements</NavItem>
+            <NavItem to="/certifications">Certifications</NavItem>
             <NavItem to="/about">About</NavItem>
             <NavItem to="/contact">Contact</NavItem>
             <NavItem to="/donations">Donations</NavItem>

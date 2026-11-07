@@ -1,6 +1,6 @@
 // 📦 DATOS: separados de la vista.
 // Para sumar un logro nuevo solo tocás este array, sin tocar el JSX.
-const ACHIEVEMENTS = [
+const CERTIFICATIONS = [
   {
     category: 'Cybersecurity',
     items: [
@@ -34,14 +34,14 @@ const ACHIEVEMENTS = [
 ]
 
 // 🖼️ VISTA: recorre los datos y dibuja una sección por categoría.
-export const Achievements = () => {
+export const Certifications = () => {
   return (
     <div className="text-center container">
-      <h1>Achievements</h1>
+      <h1>Certifications</h1>
       <div className="bg-dark d-inline-block p-2 rounded border border-3 border-success">
         {/* 🔁 Primer .map(): una <section> por categoría.
             `key` ayuda a React a identificar cada elemento de la lista. */}
-        {ACHIEVEMENTS.map(({ category, items }) => (
+        {CERTIFICATIONS.map(({ category, items }) => (
           <section key={category}>
             <h3>{category}</h3>
             <ul className="list-unstyled">
