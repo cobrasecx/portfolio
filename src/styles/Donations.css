@@ -1,0 +1,45 @@
+.donations {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* La "tarjeta" que vive dentro del modal */
+.donations__card {
+    position: relative;
+    /* para ubicar la X de cierre en la esquina */
+    width: min(90vw, 480px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: #212529;
+    color: #fff;
+}
+
+.donations__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.donations__list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.donations__item {
+    padding: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.75rem;
+}
+
+.donations__address {
+    display: block;
+    margin: 0.5rem 0;
+    color: #adff2f;
+    word-break: break-all;
+    /* las direcciones son largas: que salten de línea */
+    user-select: all;
+    /* un clic selecciona la dirección completa */
+}

@@ -15,6 +15,8 @@ function App() {
 
         <Route path="/achievements" element={<Components.Achievements />} />
 
+        <Route path="/donations" element={<Components.Donations />} />
+
         <Route path="*" element={<Components.Error404 />} />
       </Routes>
     </div>
