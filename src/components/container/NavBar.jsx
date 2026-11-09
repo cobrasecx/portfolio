@@ -1,24 +1,5 @@
 import { NavLink } from 'react-router-dom'
-
-const inactiveStyle = {
-  textDecoration: 'none',
-  color: '#adff2f',
-}
-
-const activeStyle = {
-  textDecoration: 'none',
-  color: '#ff8243',
-}
-
-const siteStyle = {
-  color: '#7df9ff',
-  fontStyle: 'italic',
-  fontWeight: 'bold',
-}
-
-// NavLink llama a esta función y le pasa { isActive }.
-// Antes estaba repetida 5 veces; ahora se define una sola vez.
-const linkStyle = ({ isActive }) => (isActive ? activeStyle : inactiveStyle)
+import { ThemeToggle } from '../pure/ThemeToggle'
 
 // Parte común de las URLs: si cambia tu usuario, se edita solo acá
 const PROJECTS_BASE_URL = 'https://cobrasecx.github.io'
@@ -53,7 +34,7 @@ const projects = [
 // "children" es el texto que escribís entre las etiquetas (ej. Home).
 const NavItem = ({ to, children }) => (
   <li className="nav-item">
-    <NavLink to={to} className="nav-link" style={linkStyle}>
+    <NavLink to={to} className="nav-link">
       {children}
     </NavLink>
   </li>
@@ -61,9 +42,9 @@ const NavItem = ({ to, children }) => (
 
 export const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <NavLink to="/" style={linkStyle} className="navbar-brand">
+        <NavLink to="/" className="navbar-brand">
           <span className="fw-bold fst-italic">My Portfolio</span>
         </NavLink>
         <button
@@ -82,18 +63,18 @@ export const NavBar = () => {
             <NavItem to="/">Home</NavItem>
 
             <li className="nav-item dropdown">
-              <NavLink
-                to="#"
+              <button
+                type="button"
                 id="navbarDropdown"
                 className="nav-link dropdown-toggle"
-                style={inactiveStyle}
                 data-bs-toggle="dropdown" // importante
+                aria-expanded="false"
               >
                 Projects
-              </NavLink>
+              </button>
 
               <ul
-                className="dropdown-menu dropdown-menu-dark text-center"
+                className="dropdown-menu text-center"
                 aria-labelledby="navbarDropdown"
               >
                 {/* <a> en vez de <NavLink> porque son URLs externas.
@@ -104,7 +85,7 @@ export const NavBar = () => {
                       href={`${PROJECTS_BASE_URL}/${slug}/`}
                       className="dropdown-item nav-link"
                     >
-                      <span style={siteStyle}>{name}</span>
+                      <span className="site-project">{name}</span>
                     </a>
                   </li>
                 ))}
@@ -117,6 +98,9 @@ export const NavBar = () => {
             <NavItem to="/about">About</NavItem>
             <NavItem to="/contact">Contact</NavItem>
             <NavItem to="/donations">Donations</NavItem>
+            <li className="nav-item d-flex align-items-center">
+              <ThemeToggle />
+            </li>
           </ul>
         </div>
       </div>

@@ -5,20 +5,50 @@ body {
   background-size: cover;
 }
 
+/* 🌑 El fondo es oscuro en ambos temas: el texto que va directo sobre él siempre es claro */
+body {
+  color: #fff;
+}
+
+/* 🃏 Las tarjetas sí tienen fondo propio del tema, así que recuperan el color de texto del tema */
+.card {
+  color: var(--bs-body-color);
+}
+
+/* 🎨 Colores de lo que va SOBRE el fondo oscuro: iguales en ambos temas */
+:root {
+  --site-heading: #18c88e;
+  --site-subheading: #d2cd17;
+  --site-stroke: black;
+  /* contorno de los títulos */
+  --site-ability: #00cc99;
+}
+
+/* 🌑 Navbar y menú en modo oscuro (tienen fondo oscuro) */
+[data-bs-theme='dark'] {
+  --bs-body-color: #fff;
+  --bs-body-color-rgb: 255, 255, 255;
+  --site-nav-link: #adff2f;
+  --site-nav-active: #ff8243;
+  --site-accent: #7df9ff;
+}
+
+/* ☀️ Navbar y menú en modo claro (tienen fondo claro: necesitan colores más oscuros) */
+[data-bs-theme='light'] {
+  --site-nav-link: #0b6b4d;
+  --site-nav-active: #b93c00;
+  --site-accent: #0369a1;
+}
+
 h1,
 h2 {
-  /* color: #6610f2; */
-  color: #18c88e;
-  -webkit-text-stroke: 1px black;
+  color: var(--site-heading);
+  -webkit-text-stroke: 1px var(--site-stroke);
 }
 
 h3 {
-  color: #d2cd17;
-  -webkit-text-stroke: 1px black;
-}
-
-p {
-  color: #f3f1b4;
+  color: var(--site-subheading);
+  -webkit-text-stroke: 1px var(--site-stroke);
 }
 
 .greenYellow {
@@ -34,6 +64,33 @@ a {
 }
 
 .ability {
-  color: #00cc99;
+  color: var(--site-ability);
+  font-weight: bold;
+}
+
+/* 🧭 NAVBAR: sobrescribimos las variables de Bootstrap con las nuestras */
+.navbar {
+  --bs-navbar-brand-color: var(--site-nav-link);
+  --bs-navbar-brand-hover-color: var(--site-nav-active);
+}
+
+.navbar-brand.active {
+  color: var(--site-nav-active);
+}
+
+.navbar-nav {
+  --bs-nav-link-color: var(--site-nav-link);
+  --bs-nav-link-hover-color: var(--site-nav-active);
+}
+
+/* .active lo agrega NavLink solo; .show lo agrega Bootstrap al menú abierto */
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+  color: var(--site-nav-active);
+}
+
+.site-project {
+  color: var(--site-accent);
+  font-style: italic;
   font-weight: bold;
 }
