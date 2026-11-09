@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./src/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // ⚡ Aplica el tema guardado ANTES de que cargue React (evita el parpadeo)
+      // Si no hay nada guardado, arranca en "dark" (el look actual del sitio)
+      try {
+        var theme = localStorage.getItem('theme') || 'dark'
+        document.documentElement.setAttribute('data-bs-theme', theme)
+      } catch (e) {}
+    </script>
     <title>Alberto Ayza | Cybersecurity &amp; Web Development Portfolio</title>
     <!-- 🔎 Lo que muestra Google debajo del título -->
     <meta
