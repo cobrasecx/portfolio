@@ -20,3 +20,19 @@
   display: grid;
   place-items: center;
 }
+
+/* 🃏 La tarjeta del modal: mismo patrón que .donations__card */
+.contact__card {
+  position: relative;
+  width: min(90vw, 480px);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: #212529;
+  color: #fff;
+}
+
+.contact__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}

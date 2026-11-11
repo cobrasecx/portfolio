@@ -1,15 +1,12 @@
-// Contact.jsx — formulario de contacto ✉️
+// Contact.jsx — formulario de contacto ✉️ (ahora dentro de un modal, como Donations)
 import { useState } from 'react'
 import axios from 'axios'
 import { Modal } from '../../components/pure/Modal'
 import '../../styles/Contact.css'
 
-// 🔗 Endpoint de FormSubmit. El código largo es un ALIAS que oculta tu email de los scrapers.
-// No es un secreto, y ponerlo en .env no lo esconde: todo VITE_* termina en el bundle público.
 const FORM_ENDPOINT =
   'https://formsubmit.co/ajax/203cf7fc5cf3429a39018970bed76969'
 
-// 📝 Los datos de los inputs de una sola línea, en un array (mismo patrón .map() de NavBar)
 const FIELDS = [
   {
     name: 'name',
@@ -37,119 +34,157 @@ const FIELDS = [
 const INITIAL_FORM = { name: '', lastName: '', email: '', message: '' }
 
 export const Contact = () => {
-  const [form, setForm] = useState(INITIAL_FORM)
+  // 🆕 Antes el formulario se veía directo en la página. Ahora formOpen controla
+  // si el Modal está montado o no (false = solo se ve el botón disparador)
+  const [formOpen, setFormOpen] = useState(false)
 
-  // 🚦 UN solo estado para la etapa del envío, en vez de modal + isSended:
-  // "idle" (escribiendo) | "sending" (enviando) | "success" | "error"
-  const [status, setStatus] = useState('idle')
+  const [form, setForm] = useState(INITIAL_FORM)
+  const [status, setStatus] = useState('idle') // idle | sending | success | error
 
   const handleClean = () => setForm(INITIAL_FORM)
 
-  // Forma funcional (prev => ...): siempre parte del estado más reciente 🔄
   const handleChange = ({ target: { name, value } }) =>
     setForm((prev) => ({ ...prev, [name]: value }))
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (status === 'sending') return // 🛑 evita el doble envío
+    if (status === 'sending') return
 
     setStatus('sending')
     try {
-      // axios.post(url, datos, config). Con un objeto, axios arma el JSON y su Content-Type solo.
       const { data } = await axios.post(FORM_ENDPOINT, form, {
         headers: { Accept: 'application/json' },
-        timeout: 10000, // 10 s: 3 s era muy justo para un servicio externo
+        timeout: 10000,
       })
-
-      // axios ya lanza error si el status no es 2xx. Por las dudas, también tratamos
-      // como error una respuesta que diga explícitamente success: false / "false".
       const failed = data?.success === false || data?.success === 'false'
       setStatus(failed ? 'error' : 'success')
-    } catch {
-      // 🌐 Sin red, timeout o error del servidor: ahora SÍ se lo avisamos al usuario
-      setStatus('error')
+    } catch (error) {
+      // 📡 Si el navegador nunca pudo leer una respuesta (bloqueado, cancelado, timeout),
+      // no hay forma de saber si FormSubmit igual procesó el envío del lado del servidor.
+      if (error.response) {
+        setStatus('error')
+      } else {
+        setStatus('unknown')
+      }
     }
   }
 
-  const handleClose = () => {
-    // Limpiamos solo si se envió. Si falló, conserva lo que escribió ✍️
-    if (status === 'success') handleClean()
+  // 🔴 Botón "×" / Esc / clic en el fondo: SIEMPRE cierra todo, pase lo que pase
+  // (salvo que esté enviando: ahí no dejamos cerrar para no perder el envío en curso)
+  const handleModalClose = () => {
+    if (status === 'sending') return
+    if (status === 'success') handleClean() // si se había enviado bien, limpiamos para la próxima
     setStatus('idle')
+    setFormOpen(false)
   }
 
-  // 🎯 Early return: si ya hay resultado, mostramos el modal y listo.
-  // Un solo bloque en lugar de dos casi iguales.
-  if (status === 'success' || status === 'error') {
-    return (
-      <Modal>
-        <div className="text-center contact__result">
-          <h2>
-            {status === 'success' ? 'Mensaje enviado ;)' : 'Hubo un error :('}
-          </h2>
-          <button
-            type="button"
-            className="btn btn-danger"
-            onClick={handleClose}
-          >
-            Cerrar
-          </button>
-        </div>
-      </Modal>
-    )
+  // 🟢 Botón "Cerrar" del resultado: distinto de handleModalClose a propósito.
+  // Si fue error, en vez de cerrar todo, vuelve al formulario con lo que ya había escrito,
+  // para que pueda corregir y reintentar sin perder los datos
+  const handleResultClose = () => {
+    if (status === 'success') {
+      handleClean()
+      setFormOpen(false)
+    }
+    setStatus('idle')
   }
 
   return (
     <section className="contact container text-center">
       <h2>Contact:</h2>
-      <form onSubmit={handleSubmit} className="contact__form container">
-        {FIELDS.map(({ name, type, label, autoComplete, maxLength }) => (
-          <input
-            key={name} // 🔑 identificador único para cada elemento de la lista
-            type={type}
-            name={name}
-            className="form-control contact__input w-100 mt-1"
-            placeholder={`${label}...`}
-            aria-label={label} // 🔊 el placeholder no reemplaza a un label
-            autoComplete={autoComplete} // ayuda al navegador a autocompletar
-            maxLength={maxLength}
-            value={form[name]}
-            onChange={handleChange}
-            required
-          />
-        ))}
+      <p>¿Querés escribirme? Abrí el formulario y contame 👇</p>
 
-        <textarea
-          name="message"
-          className="form-control contact__input w-100 mt-1"
-          placeholder="Message..."
-          aria-label="Message"
-          rows={5}
-          maxLength={500}
-          value={form.message}
-          onChange={handleChange}
-          required
-        />
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={() => setFormOpen(true)}
+      >
+        Open Contact Form
+      </button>
 
-        <div className="m-1">
-          {/* disabled mientras envía: no se puede clickear dos veces */}
-          <button
-            type="submit"
-            className="btn btn-primary"
-            disabled={status === 'sending'}
-          >
-            {status === 'sending' ? 'Sending...' : 'Send'}
-          </button>
+      {/* 🆕 El Modal solo se monta cuando formOpen es true */}
+      {formOpen && (
+        <Modal onClose={handleModalClose} label="Contact form">
+          <div className="contact__card">
+            <button
+              type="button"
+              className="btn-close btn-close-white contact__close"
+              aria-label="Close"
+              onClick={handleModalClose}
+            />
 
-          {/* type="button": ahora la limpieza la hace solo el onClick, sin el reset nativo */}
-          <button
-            type="button"
-            className="btn btn-danger"
-            onClick={handleClean}
-          >
-            Clean
-          </button>
-        </div>
-      </form>
+            {/* 🔀 Adentro del mismo modal: o ves el resultado, o ves el formulario */}
+            {status === 'success' ||
+            status === 'error' ||
+            status === 'unknown' ? (
+              <div className="text-center contact__result">
+                <h2>
+                  {status === 'success' && 'Mensaje enviado ;)'}
+                  {status === 'error' && 'Hubo un error :('}
+                  {status === 'unknown' &&
+                    'No pudimos confirmar el envío. Revisá tu correo antes de reintentar 📬'}
+                </h2>
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={handleResultClose}
+                >
+                  Cerrar
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="contact__form container">
+                {FIELDS.map(
+                  ({ name, type, label, autoComplete, maxLength }) => (
+                    <input
+                      key={name}
+                      type={type}
+                      name={name}
+                      className="form-control contact__input w-100 mt-1"
+                      placeholder={`${label}...`}
+                      aria-label={label}
+                      autoComplete={autoComplete}
+                      maxLength={maxLength}
+                      value={form[name]}
+                      onChange={handleChange}
+                      required
+                    />
+                  ),
+                )}
+
+                <textarea
+                  name="message"
+                  className="form-control contact__input w-100 mt-1"
+                  placeholder="Message..."
+                  aria-label="Message"
+                  rows={5}
+                  maxLength={500}
+                  value={form.message}
+                  onChange={handleChange}
+                  required
+                />
+
+                <div className="m-1">
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    disabled={status === 'sending'}
+                  >
+                    {status === 'sending' ? 'Sending...' : 'Send'}
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-danger"
+                    onClick={handleClean}
+                  >
+                    Clean
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
+        </Modal>
+      )}
     </section>
   )
 }
