@@ -7,6 +7,12 @@
 
 .contact {
   max-width: 100%;
+  min-height: calc(100vh - 56px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem; /* 📏 separación controlada vos mismo, en vez de que el navegador la reparta */
 }
 
 /* Texto que escribe el usuario: marrón rojizo en cursiva (antes repetido 4 veces inline) */
