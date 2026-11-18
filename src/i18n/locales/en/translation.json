@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "certifications": "Certifications",
+    "writeups": "WriteUps",
+    "news": "News",
+    "about": "About",
+    "contact": "Contact",
+    "donations": "Donations"
+  },
+  "home": {
+    "title": "Hi! I'm Alberto Ayza (CobraSec)",
+    "subtitle": "Web Developer, Pentester & content creator located in Argentina"
+  },
+  "about": {
+    "title": "About:",
+    "photoAlt": "Photo of Alberto Ayza",
+    "groups": {
+      "security": "Security",
+      "webDev": "Web development",
+      "also": "Also"
+    },
+    "paragraph1": "Hi! I'm Alberto Ayza, a cybersecurity student and junior ethical hacking researcher from Argentina. I focus on web hacking: I practice with bug bounty programs and VDPs, PortSwigger Web Security Academy labs, OWASP Juice Shop and CTFs, and I use Caido as my intercepting proxy.",
+    "paragraph2": "Before moving into security I worked as a full-stack web developer (JavaScript, React, Node.js, Express and MongoDB). That background helps me understand how web applications are built, and therefore how they break. I hold a <1>Higher Technician degree in Applied Computing</1> (2022) from <3>INSPT</3> - <5>UTN</5>, in Buenos Aires.",
+    "paragraph3": "I'm also a freelancer and entrepreneur, and I'm currently studying Web3. If you want to talk about web development, security or a project, reach out through the Contact section."
+  },
+  "contact": {
+    "title": "Contact:",
+    "intro": "Want to write to me? Open the form and tell me 👇",
+    "openForm": "Open Contact Form",
+    "modalLabel": "Contact form",
+    "close": "Close",
+    "fields": {
+      "name": "Name",
+      "lastName": "Lastname",
+      "email": "Email",
+      "message": "Message"
+    },
+    "send": "Send",
+    "sending": "Sending...",
+    "clean": "Clean",
+    "result": {
+      "success": "Message sent ;)",
+      "error": "There was an error :(",
+      "unknown": "We couldn't confirm the submission. Check your email before retrying 📬"
+    }
+  }
+}

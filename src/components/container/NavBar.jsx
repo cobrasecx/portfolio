@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { ThemeToggle } from '../pure/ThemeToggle'
+import { LanguageToggle } from '../pure/LanguageToggle'
 
 // Parte común de las URLs: si cambia tu usuario, se edita solo acá
 const PROJECTS_BASE_URL = 'https://cobrasecx.github.io'
@@ -41,6 +43,8 @@ const NavItem = ({ to, children }) => (
 )
 
 export const NavBar = () => {
+  const { t } = useTranslation() // 🌐 "t" = función "traducir": recibe una clave y devuelve el texto en el idioma activo
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -60,7 +64,7 @@ export const NavBar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <NavItem to="/">Home</NavItem>
+            <NavItem to="/">{t('nav.home')}</NavItem>
 
             <li className="nav-item dropdown">
               <button
@@ -70,7 +74,7 @@ export const NavBar = () => {
                 data-bs-toggle="dropdown" // importante
                 aria-expanded="false"
               >
-                Projects
+                {t('nav.projects')}
               </button>
 
               <ul
@@ -92,14 +96,18 @@ export const NavBar = () => {
               </ul>
             </li>
 
-            <NavItem to="/certifications">Certifications</NavItem>
-            <NavItem to="/writeups">WriteUps</NavItem>
-            <NavItem to="/news">News</NavItem>
-            <NavItem to="/about">About</NavItem>
-            <NavItem to="/contact">Contact</NavItem>
-            <NavItem to="/donations">Donations</NavItem>
+            <NavItem to="/certifications">{t('nav.certifications')}</NavItem>
+            <NavItem to="/writeups">{t('nav.writeups')}</NavItem>
+            <NavItem to="/news">{t('nav.news')}</NavItem>
+            <NavItem to="/about">{t('nav.about')}</NavItem>
+            <NavItem to="/contact">{t('nav.contact')}</NavItem>
+            <NavItem to="/donations">{t('nav.donations')}</NavItem>
             <li className="nav-item d-flex align-items-center">
               <ThemeToggle />
+            </li>
+
+            <li className="nav-item d-flex align-items-center ms-2">
+              <LanguageToggle />
             </li>
           </ul>
         </div>

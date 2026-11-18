@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "certifications": "Certificaciones",
+    "writeups": "WriteUps",
+    "news": "Novedades",
+    "about": "Sobre mí",
+    "contact": "Contacto",
+    "donations": "Donaciones"
+  },
+  "home": {
+    "title": "¡Hola! Soy Alberto Ayza (CobraSec)",
+    "subtitle": "Desarrollador Web, Pentester y creador de contenido, ubicado en Argentina"
+  },
+  "about": {
+    "title": "Sobre mí:",
+    "photoAlt": "Foto de Alberto Ayza",
+    "groups": {
+      "security": "Seguridad",
+      "webDev": "Desarrollo Web",
+      "also": "También"
+    },
+    "paragraph1": "¡Hola! Soy Alberto Ayza, estudiante de Ciberseguridad e investigador novato en hacking ético, de Argentina. Me enfoco en hacking web: practico con programas de bug bounty y VDPs, labs de PortSwigger Web Security Academy, OWASP Juice Shop y CTFs, y uso Caido como mi proxy de interceptación.",
+    "paragraph2": "Antes de pasar a seguridad trabajé como desarrollador web fullstack (JavaScript, React, Node.js, Express y MongoDB). Esa experiencia me ayuda a entender cómo se construyen las aplicaciones web, y por lo tanto cómo se rompen. Tengo un <1>Título de Técnico Superior en Informática Aplicada</1> (2022) de <3>INSPT</3> - <5>UTN</5>, en Buenos Aires.",
+    "paragraph3": "También soy freelancer y emprendedor, y actualmente estoy estudiando Web3. Si querés hablar sobre desarrollo web, seguridad o algún proyecto, escribime a través de la sección Contacto."
+  },
+  "contact": {
+    "title": "Contacto:",
+    "intro": "¿Querés escribirme? Abrí el formulario y contame 👇",
+    "openForm": "Abrir formulario de contacto",
+    "modalLabel": "Formulario de contacto",
+    "close": "Cerrar",
+    "fields": {
+      "name": "Nombre",
+      "lastName": "Apellido",
+      "email": "Correo",
+      "message": "Mensaje"
+    },
+    "send": "Enviar",
+    "sending": "Enviando...",
+    "clean": "Limpiar",
+    "result": {
+      "success": "¡Mensaje enviado! ;)",
+      "error": "Hubo un error :(",
+      "unknown": "No pudimos confirmar el envío. Revisá tu correo antes de reintentar 📬"
+    }
+  }
+}
