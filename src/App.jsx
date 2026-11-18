@@ -1,11 +1,13 @@
 import { Routes, Route } from 'react-router-dom'
 import * as Components from './index/indexComponents'
 import { NavBar } from './components/container/NavBar'
+import { Footer } from './components/container/Footer'
 
 function App() {
   return (
-    <div className="App min-vh-100">
+    <div className="App min-vh-100 d-flex flex-column">
       <NavBar />
+      <div className="flex-grow-1">
       <Routes>
         <Route path="/" element={<Components.Home />} />
 
@@ -23,6 +25,8 @@ function App() {
 
         <Route path="*" element={<Components.Error404 />} />
       </Routes>
+      </div>
+      <Footer />
     </div>
   )
 }
