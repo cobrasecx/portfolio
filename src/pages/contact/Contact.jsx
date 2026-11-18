@@ -1,4 +1,5 @@
 // Contact.jsx — formulario de contacto ✉️ (ahora dentro de un modal, como Donations)
+import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
 import axios from 'axios'
 import { Modal } from '../../components/pure/Modal'
@@ -11,21 +12,21 @@ const FIELDS = [
   {
     name: 'name',
     type: 'text',
-    label: 'Name',
+    labelKey: 'name',
     autoComplete: 'given-name',
     maxLength: 50,
   },
   {
     name: 'lastName',
     type: 'text',
-    label: 'Lastname',
+    labelKey: 'lastName',
     autoComplete: 'family-name',
     maxLength: 50,
   },
   {
     name: 'email',
     type: 'email',
-    label: 'Email',
+    labelKey: 'email',
     autoComplete: 'email',
     maxLength: 254,
   },
@@ -34,6 +35,7 @@ const FIELDS = [
 const INITIAL_FORM = { name: '', lastName: '', email: '', message: '' }
 
 export const Contact = () => {
+  const { t } = useTranslation()
   // 🆕 Antes el formulario se veía directo en la página. Ahora formOpen controla
   // si el Modal está montado o no (false = solo se ve el botón disparador)
   const [formOpen, setFormOpen] = useState(false)
@@ -91,25 +93,25 @@ export const Contact = () => {
 
   return (
     <section className="contact container text-center">
-      <h2>Contact:</h2>
-      <p>¿Querés escribirme? Abrí el formulario y contame 👇</p>
+      <h2>{t('contact.title')}</h2>
+      <p>{t('contact.intro')}</p>
 
       <button
         type="button"
         className="btn btn-primary"
         onClick={() => setFormOpen(true)}
       >
-        Open Contact Form
+        {t('contact.openForm')}
       </button>
 
       {/* 🆕 El Modal solo se monta cuando formOpen es true */}
       {formOpen && (
-        <Modal onClose={handleModalClose} label="Contact form">
+        <Modal onClose={handleModalClose} label={t('contact.modalLabel')}>
           <div className="contact__card">
             <button
               type="button"
               className="btn-close btn-close-white contact__close"
-              aria-label="Close"
+              aria-label={t('contact.close')}
               onClick={handleModalClose}
             />
 
@@ -119,44 +121,47 @@ export const Contact = () => {
             status === 'unknown' ? (
               <div className="text-center contact__result">
                 <h2>
-                  {status === 'success' && 'Mensaje enviado ;)'}
-                  {status === 'error' && 'Hubo un error :('}
-                  {status === 'unknown' &&
-                    'No pudimos confirmar el envío. Revisá tu correo antes de reintentar 📬'}
+                  {status === 'success' && t('contact.result.success')}
+                  {status === 'error' && t('contact.result.error')}
+                  {status === 'unknown' && t('contact.result.unknown')}
                 </h2>
                 <button
                   type="button"
                   className="btn btn-danger"
                   onClick={handleResultClose}
                 >
-                  Cerrar
+                  {t('contact.close')}
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="contact__form container">
                 {FIELDS.map(
-                  ({ name, type, label, autoComplete, maxLength }) => (
-                    <input
-                      key={name}
-                      type={type}
-                      name={name}
-                      className="form-control contact__input w-100 mt-1"
-                      placeholder={`${label}...`}
-                      aria-label={label}
-                      autoComplete={autoComplete}
-                      maxLength={maxLength}
-                      value={form[name]}
-                      onChange={handleChange}
-                      required
-                    />
-                  ),
+                  ({ name, type, labelKey, autoComplete, maxLength }) => {
+                    const label = t(`contact.fields.${labelKey}`)
+
+                    return (
+                      <input
+                        key={name}
+                        type={type}
+                        name={name}
+                        className="form-control contact__input w-100 mt-1"
+                        placeholder={`${label}...`}
+                        aria-label={label}
+                        autoComplete={autoComplete}
+                        maxLength={maxLength}
+                        value={form[name]}
+                        onChange={handleChange}
+                        required
+                      />
+                    )
+                  },
                 )}
 
                 <textarea
                   name="message"
                   className="form-control contact__input w-100 mt-1"
-                  placeholder="Message..."
-                  aria-label="Message"
+                  placeholder={`${t('contact.fields.message')}...`}
+                  aria-label={t('contact.fields.message')}
                   rows={5}
                   maxLength={500}
                   value={form.message}
@@ -170,14 +175,16 @@ export const Contact = () => {
                     className="btn btn-primary"
                     disabled={status === 'sending'}
                   >
-                    {status === 'sending' ? 'Sending...' : 'Send'}
+                    {status === 'sending'
+                      ? t('contact.sending')
+                      : t('contact.send')}
                   </button>
                   <button
                     type="button"
                     className="btn btn-danger"
                     onClick={handleClean}
                   >
-                    Clean
+                    {t('contact.clean')}
                   </button>
                 </div>
               </form>
