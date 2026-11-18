@@ -1,19 +1,19 @@
 // About.jsx — página "Sobre mí" 👤
+import { useTranslation, Trans } from 'react-i18next'
 import '../../styles/About.css'
 import picCV from '../../assets/img/photo-cv-black-bg.webp'
 
-// 📝 Las URLs juntas arriba: si una cambia, se edita en un solo lugar
 const LINKS = {
   inspt: 'https://inspt.utn.edu.ar/',
   utn: 'https://www.frba.utn.edu.ar/',
   career: 'https://inspt.utn.edu.ar/carreras/informatica_aplicada/',
 }
 
-// 📊 Habilidades en un array de objetos: agregar o quitar una = editar UNA línea.
-// ⚠️ Python venía de tu bio vieja: dejalo solo si sigue vigente.
+// 🆕 "id" en vez de "title": es la clave para buscar la traducción en about.groups,
+// "skills" queda igual porque los nombres de tecnologías no se traducen (JavaScript es JavaScript en cualquier idioma)
 const SKILL_GROUPS = [
   {
-    title: 'Security',
+    id: 'security',
     skills: [
       'Web hacking',
       'Bug bounties & VDPs',
@@ -23,7 +23,7 @@ const SKILL_GROUPS = [
     ],
   },
   {
-    title: 'Web development',
+    id: 'webDev',
     skills: [
       'JavaScript',
       'React',
@@ -38,71 +38,65 @@ const SKILL_GROUPS = [
     ],
   },
   {
-    title: 'Also',
+    id: 'also',
     skills: ['Linux', 'Bash', 'Python', 'Web3 (studying)'],
   },
 ]
 
-// Link externo seguro: pestaña nueva + noopener noreferrer 🛡️
 const ExtLink = ({ href, children }) => (
   <a href={href} target="_blank" rel="noopener noreferrer">
     {children}
   </a>
 )
 
-export const About = () => (
-  <section className="about">
-    <div className="about__card text-center p-3">
-      <h2>About:</h2>
+export const About = () => {
+  const { t } = useTranslation()
 
-      <p>
-        Hi! I&apos;m Alberto Ayza, a cybersecurity student and junior ethical
-        hacking researcher from Argentina. I focus on web hacking: I practice
-        with bug bounty programs and VDPs, PortSwigger Web Security Academy
-        labs, OWASP Juice Shop and CTFs, and I use Caido as my intercepting
-        proxy.
-      </p>
+  return (
+    <section className="about">
+      <div className="about__card text-center p-3">
+        <h2>{t('about.title')}</h2>
 
-      <p>
-        Before moving into security I worked as a full-stack web developer
-        (JavaScript, React, Node.js, Express and MongoDB). That background helps
-        me understand how web applications are built, and therefore how they
-        break. I hold a{' '}
-        <ExtLink href={LINKS.career}>
-          Higher Technician degree in Applied Computing
-        </ExtLink>{' '}
-        (2022) from <ExtLink href={LINKS.inspt}>INSPT</ExtLink> -{' '}
-        <ExtLink href={LINKS.utn}>UTN</ExtLink> in Buenos Aires.
-      </p>
+        <p>{t('about.paragraph1')}</p>
 
-      <p>
-        I&apos;m also a freelancer and entrepreneur, and I&apos;m currently
-        studying Web3. If you want to talk about web development, security or a
-        project, reach out through the Contact section.
-      </p>
+        {/* 🆕 <Trans>: como el párrafo lleva 3 links adentro, no alcanza con t().
+            "components" le dice a Trans qué elemento real va en cada hueco numerado
+            del JSON (<1>, <3>, <5>), en el mismo orden en que aparecen */}
+        <p>
+          <Trans
+            i18nKey="about.paragraph2"
+            components={{
+              1: <ExtLink href={LINKS.career} />,
+              3: <ExtLink href={LINKS.inspt} />,
+              5: <ExtLink href={LINKS.utn} />,
+            }}
+          />
+        </p>
 
-      {/* 🔁 Un grupo por cada elemento del array; adentro, una "pastilla" por habilidad */}
-      {SKILL_GROUPS.map(({ title, skills }) => (
-        <div key={title} className="about__group">
-          <h3 className="h5">{title}</h3>
-          <ul className="about__skills">
-            {skills.map((skill) => (
-              <li key={skill} className="about__skill ability">
-                {skill}
-              </li>
-            ))}
-          </ul>
+        <p>{t('about.paragraph3')}</p>
+
+        {SKILL_GROUPS.map(({ id, skills }) => (
+          <div key={id} className="about__group">
+            <h3 className="h5">{t(`about.groups.${id}`)}</h3>
+            <ul className="about__skills">
+              {skills.map((skill) => (
+                <li key={skill} className="about__skill ability">
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+
+        <div className="container mb-2">
+          <img
+            src={picCV}
+            className="about__photo rounded-circle"
+            alt={t('about.photoAlt')}
+            loading="lazy"
+          />
         </div>
-      ))}
-
-      <div className="container mb-2">
-        <img
-          src={picCV}
-          className="about__photo rounded-circle"
-          alt="Photo of Alberto Ayza"
-          loading="lazy"
-        />
       </div>
-    </div>
-  </section>
-)
+    </section>
+  )
+}
